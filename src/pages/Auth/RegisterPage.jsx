@@ -809,7 +809,7 @@ const RegisterPage = () => {
                     {loading ? (
                       <>
                         <div className="w-5 h-5 border-b-2 border-white rounded-full animate-spin" />
-                        <span>Creating Account...</span>
+                        <span>Creating Account....</span>
                       </>
                     ) : (
                       <>
