@@ -1,3 +1,5 @@
+import { API_BASE_URL } from './api.js';
+
 // Utility function to get the correct image URL
 export const getImageUrl = (imagePath, fallbackSvg = null) => {
   if (!imagePath) {
@@ -10,7 +12,7 @@ export const getImageUrl = (imagePath, fallbackSvg = null) => {
   }
   
   // If it's a filename, construct the URL to the uploaded file
-  return `http://localhost:3000/uploads/shop-logos/${imagePath}`;
+  return `${API_BASE_URL}/uploads/shop-logos/${imagePath}`;
 };
 
 // Default shop logo SVG

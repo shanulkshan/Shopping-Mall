@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer, useEffect, useCallback } from 'react';
+import { apiFetch } from '../utils/api';
 
 // Initial state
 const initialState = {
@@ -95,12 +96,8 @@ export const AuthProvider = ({ children }) => {
                 return;
             }
             
-            const response = await fetch('http://localhost:3000/api/auth/me', {
+            const response = await apiFetch('/api/auth/me', {
                 method: 'GET',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
             });
 
             if (response.ok) {
@@ -132,12 +129,8 @@ export const AuthProvider = ({ children }) => {
         try {
             dispatch({ type: AUTH_ACTIONS.LOGIN_START });
 
-            const response = await fetch('http://localhost:3000/api/auth/login', {
+            const response = await apiFetch('/api/auth/login', {
                 method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 body: JSON.stringify({ email, password })
             });
 
@@ -175,18 +168,18 @@ export const AuthProvider = ({ children }) => {
 
             const requestOptions = {
                 method: 'POST',
-                credentials: 'include',
                 body: isFormData ? userData : JSON.stringify(userData)
             };
 
-            // Only set Content-Type for JSON data, let browser set it for FormData
+            // The apiFetch utility will handle Content-Type for FormData
             if (!isFormData) {
-                requestOptions.headers = {
-                    'Content-Type': 'application/json',
-                };
+                // apiFetch will set Content-Type to application/json by default
+            } else {
+                // For FormData, we need to let the browser set the boundary
+                requestOptions.headers = {};
             }
 
-            const response = await fetch('http://localhost:3000/api/auth/register', requestOptions);
+            const response = await apiFetch('/api/auth/register', requestOptions);
 
             const data = await response.json();
 
@@ -212,9 +205,8 @@ export const AuthProvider = ({ children }) => {
 
     const logout = useCallback(async () => {
         try {
-            await fetch('http://localhost:3000/api/auth/logout', {
+            await apiFetch('/api/auth/logout', {
                 method: 'POST',
-                credentials: 'include',
             });
         } catch (error) {
             console.error('Logout error:', error);
@@ -225,12 +217,8 @@ export const AuthProvider = ({ children }) => {
 
     const updateProfile = useCallback(async (userData) => {
         try {
-            const response = await fetch('http://localhost:3000/api/auth/profile', {
+            const response = await apiFetch('/api/auth/profile', {
                 method: 'PUT',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 body: JSON.stringify(userData)
             });
 

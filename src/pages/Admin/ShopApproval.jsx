@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-toastify';
 import { useDarkMode } from '../../context/DarkModeContext';
 import { getImageUrl, getDefaultShopLogo } from '../../utils/imageUtils';
+import { apiEndpoint } from '../../utils/api.js';
 import {
   BuildingStorefrontIcon,
   CheckCircleIcon,
@@ -36,8 +37,8 @@ const ShopApproval = () => {
     try {
       setLoading(true);
       // Use the correct admin endpoints
-      const endpoint = activeTab === 'pending' ? '/api/shops/admin/pending' : '/api/shops/admin/approved';
-      const fullUrl = `http://localhost:3000${endpoint}`;
+      const endpoint = activeTab === 'pending' ? '/shops/admin/pending' : '/shops/admin/approved';
+      const fullUrl = apiEndpoint(endpoint);
       
       console.log('Fetching from:', fullUrl);
       
@@ -75,7 +76,7 @@ const ShopApproval = () => {
 
   const handleApproveShop = async (shopId) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/shops/admin/approve/${shopId}`, {
+      const response = await fetch(apiEndpoint(`/shops/admin/approve/${shopId}`), {
         method: 'PUT',
         credentials: 'include',
         headers: {
@@ -97,7 +98,7 @@ const ShopApproval = () => {
 
   const handleRejectShop = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/shops/admin/reject/${rejectModal.shopId}`, {
+      const response = await fetch(apiEndpoint(`/shops/admin/reject/${rejectModal.shopId}`), {
         method: 'PUT',
         credentials: 'include',
         headers: {

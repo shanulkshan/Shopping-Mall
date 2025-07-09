@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
 import { useDarkMode } from '../../../context/DarkModeContext';
 import { getImageUrl, getDefaultShopLogo } from '../../../utils/imageUtils';
+import { apiEndpoint } from '../../../utils/api.js';
 import {
   ArrowLeftIcon,
   BuildingStorefrontIcon,
@@ -32,7 +33,7 @@ const ShopDetail = () => {
 
   const fetchShopDetails = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/shops/${shopId}`);
+      const response = await fetch(apiEndpoint(`/shops/${shopId}`));
       
       if (response.ok) {
         const data = await response.json();
@@ -47,7 +48,7 @@ const ShopDetail = () => {
 
   const fetchShopItems = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/item/shop/${shopId}`);
+      const response = await fetch(apiEndpoint(`/item/shop/${shopId}`));
       
       if (response.ok) {
         const data = await response.json();

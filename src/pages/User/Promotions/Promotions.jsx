@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDarkMode } from '../../../context/DarkModeContext';
 import { TagIcon, CalendarIcon, ShoppingBagIcon } from '@heroicons/react/24/outline';
+import { apiEndpoint } from '../../../utils/api.js';
 
 const Promotions = () => {
   const { isDarkMode } = useDarkMode();
@@ -19,7 +20,7 @@ const Promotions = () => {
   const fetchPromotions = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:3000/api/promotion');
+      const response = await fetch(apiEndpoint('/promotion'));
       
       if (response.ok) {
         const data = await response.json();

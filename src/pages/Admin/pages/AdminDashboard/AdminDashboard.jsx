@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useDarkMode } from '../../../../context/DarkModeContext';
 import { Link } from 'react-router-dom';
+import { apiEndpoint } from '../../../../utils/api.js';
 import {
   BuildingStorefrontIcon,
   ShoppingBagIcon,
@@ -45,7 +46,7 @@ const AdminDashboard = () => {
       setLoading(true);
       
       // Fetch shops data
-      const shopsResponse = await fetch('http://localhost:3000/api/shop/admin/all', {
+      const shopsResponse = await fetch(apiEndpoint('/shop/admin/all'), {
         credentials: 'include',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -53,7 +54,7 @@ const AdminDashboard = () => {
       });
       
       // Fetch promotions data
-      const promotionsResponse = await fetch('http://localhost:3000/api/promotion', {
+      const promotionsResponse = await fetch(apiEndpoint('/promotion'), {
         credentials: 'include',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`

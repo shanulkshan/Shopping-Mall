@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useDarkMode } from '../../../context/DarkModeContext';
 import { getImageUrl, getDefaultShopLogo } from '../../../utils/imageUtils';
+import { apiEndpoint } from '../../../utils/api.js';
 import {
   MagnifyingGlassIcon,
   FunnelIcon,
@@ -70,7 +71,7 @@ const Shops = () => {
         queryParams.append('sortBy', filters.sortBy);
       }
 
-      const url = `http://localhost:3000/api/shops/public?${queryParams}`;
+      const url = `${apiEndpoint(`/shops/public`)}?${queryParams}`;
       console.log('Fetching shops from:', url);
       
       const response = await fetch(url);

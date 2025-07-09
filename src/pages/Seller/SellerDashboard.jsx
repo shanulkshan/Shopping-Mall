@@ -3,6 +3,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useDarkMode } from '../../context/DarkModeContext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { apiEndpoint } from '../../utils/api.js';
 
 const SellerDashboard = () => {
   const [shop, setShop] = useState(null);
@@ -32,7 +33,7 @@ const SellerDashboard = () => {
       setLoading(true);
       
       // Fetch shop details
-      const shopResponse = await fetch('http://localhost:3000/api/shops/my-shop', {
+      const shopResponse = await fetch(apiEndpoint('/shops/my-shop'), {
         credentials: 'include'
       });
       
@@ -42,7 +43,7 @@ const SellerDashboard = () => {
       }
 
       // Fetch seller's items
-      const itemsResponse = await fetch('http://localhost:3000/api/item/my-items', {
+      const itemsResponse = await fetch(apiEndpoint('/item/my-items'), {
         credentials: 'include'
       });
       
@@ -76,7 +77,7 @@ const SellerDashboard = () => {
     if (!window.confirm('Are you sure you want to delete this item?')) return;
 
     try {
-      const response = await fetch(`http://localhost:3000/api/item/${itemId}`, {
+      const response = await fetch(apiEndpoint(`/item/${itemId}`), {
         method: 'DELETE',
         credentials: 'include'
       });
@@ -94,7 +95,7 @@ const SellerDashboard = () => {
 
   const handleToggleShopStatus = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/shops/toggle-status', {
+      const response = await fetch(apiEndpoint('/shops/toggle-status'), {
         method: 'PUT',
         credentials: 'include'
       });

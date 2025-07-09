@@ -4,6 +4,7 @@ import { useDarkMode } from '../../context/DarkModeContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { motion, AnimatePresence, Reorder } from 'framer-motion';
+import { apiEndpoint } from '../../utils/api.js';
 import {
   PlusIcon,
   PhotoIcon,
@@ -75,7 +76,7 @@ const AddItem = () => {
   const fetchItemData = async () => {
     try {
       setFetchingItem(true);
-      const response = await fetch(`http://localhost:3000/api/item/${itemId}`, {
+      const response = await fetch(apiEndpoint(`/item/${itemId}`), {
         credentials: 'include',
       });
 
@@ -278,8 +279,8 @@ const AddItem = () => {
 
       // Determine endpoint and method based on whether we're editing or creating
       const endpoint = isEditing 
-        ? `http://localhost:3000/api/item/${itemId}` 
-        : 'http://localhost:3000/api/item/create';
+        ? apiEndpoint(`/item/${itemId}`)
+        : apiEndpoint('/item/create');
       const method = isEditing ? 'PUT' : 'POST';
 
       const response = await fetch(endpoint, {

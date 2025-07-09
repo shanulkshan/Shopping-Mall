@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useDarkMode } from '../../../context/DarkModeContext';
 import { toast } from 'react-toastify';
+import { apiEndpoint } from '../../../utils/api.js';
 import {
   ArrowLeftIcon,
   StarIcon,
@@ -45,7 +46,7 @@ const ProductDetail = () => {
   const fetchItemDetails = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:3000/api/item/${itemId}`);
+      const response = await fetch(apiEndpoint(`/item/${itemId}`));
       
       if (response.ok) {
         const data = await response.json();

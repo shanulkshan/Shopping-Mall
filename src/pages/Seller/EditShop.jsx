@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { apiEndpoint } from '../../utils/api.js';
 
 const EditShop = () => {
   const [shop, setShop] = useState(null);
@@ -62,7 +63,7 @@ const EditShop = () => {
   const fetchShopData = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:3000/api/shops/my-shop', {
+      const response = await fetch(apiEndpoint('/shops/my-shop'), {
         credentials: 'include'
       });
       
@@ -182,7 +183,7 @@ const EditShop = () => {
         });
       }
 
-      const response = await fetch('http://localhost:3000/api/shops/update', {
+      const response = await fetch(apiEndpoint('/shops/update'), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
