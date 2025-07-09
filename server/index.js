@@ -117,6 +117,28 @@ app.get('/uploads/shop-logos/:filename', (req, res) => {
     }
 });
 
+// Serve logo files via API endpoint
+app.get('/logos/:filename', (req, res) => {
+    try {
+        const { filename } = req.params;
+        const filePath = path.join(__dirname, '../public/logos', filename);
+        
+        if (!fs.existsSync(filePath)) {
+            return res.status(404).json({ error: 'Logo not found' });
+        }
+        
+        res.set({
+            'Cache-Control': 'public, max-age=31536000',
+            'Content-Type': filename.endsWith('.png') ? 'image/png' : 'image/jpeg'
+        });
+        
+        res.sendFile(filePath);
+    } catch (error) {
+        console.error('Error serving logo:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 app.use('/api/beauty', beauty);
 app.use('/api/book', book);
 app.use('/api/cloth', cloth);
