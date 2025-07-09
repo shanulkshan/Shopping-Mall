@@ -27,7 +27,7 @@
       "destination": "/server/index.js"
     },
     {
-      "source": "/((?!api/|uploads/|logos/|icons/|images/|svgs/|.*\\.).*)",
+      "source": "/((?!api/|uploads/).*)",
       "destination": "/index.html"
     }
   ],
