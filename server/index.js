@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from "dotenv";
 import mongoose from 'mongoose';
+import fs from 'fs';
 import beauty from './routes/Beauty.route.js';
 import book from './routes/bookshop.route.js';
 import cloth from './routes/cloth.route.js';
@@ -77,6 +78,31 @@ app.get('/api/health', (req, res) => {
             mongoConnected: mongoose.connection.readyState === 1
         }
     });
+});
+
+// Serve uploaded images via API endpoint
+app.get('/uploads/shop-logos/:filename', (req, res) => {
+    try {
+        const { filename } = req.params;
+        const filePath = path.join(__dirname, 'uploads', 'shop-logos', filename);
+        
+        // Check if file exists
+        if (!fs.existsSync(filePath)) {
+            return res.status(404).json({ error: 'Image not found' });
+        }
+        
+        // Set cache headers
+        res.set({
+            'Cache-Control': 'public, max-age=31536000', // 1 year
+            'Content-Type': 'image/jpeg' // Default, could be improved with proper detection
+        });
+        
+        // Send file
+        res.sendFile(filePath);
+    } catch (error) {
+        console.error('Error serving image:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 });
 
 app.use('/api/beauty', beauty);

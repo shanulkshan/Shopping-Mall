@@ -12,7 +12,14 @@ export const getImageUrl = (imagePath, fallbackSvg = null) => {
   }
   
   // If it's a filename, construct the URL to the uploaded file
-  return `${API_BASE_URL}/uploads/shop-logos/${imagePath}`;
+  // In production, API_BASE_URL is empty, so we use relative URLs
+  // In development, API_BASE_URL is 'http://localhost:3000'
+  if (API_BASE_URL) {
+    return `${API_BASE_URL}/uploads/shop-logos/${imagePath}`;
+  } else {
+    // Production: use relative URL
+    return `/uploads/shop-logos/${imagePath}`;
+  }
 };
 
 // Default shop logo SVG
