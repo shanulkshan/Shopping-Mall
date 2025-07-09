@@ -29,11 +29,17 @@ app.use((req, res, next) => {
         'http://localhost:5173',
         'http://localhost:3000',
         'https://shopping-mall-dun.vercel.app',
+        'https://shopping-mall-ten-lemon.vercel.app',
+        'https://shopping-mall-bj3qg3gvh-shanukas-projects-986e9345.vercel.app',
         process.env.FRONTEND_URL
     ].filter(Boolean);
     
     const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
+    console.log('Request origin:', origin);
+    
+    // Allow all Vercel preview deployments and specific origins
+    if (allowedOrigins.includes(origin) || 
+        (origin && origin.includes('vercel.app') && origin.includes('shopping-mall'))) {
         res.header('Access-Control-Allow-Origin', origin);
     }
     
@@ -72,10 +78,11 @@ app.get('/api/health', (req, res) => {
         environment: process.env.NODE_ENV || 'development',
         message: 'Server is running successfully',
         debug: {
-            hasMongoUri: !!process.env.MONGO,
+            hasMongoUri: !!(process.env.MONGO || process.env.MONGODB_URI),
             hasJwtSecret: !!process.env.JWT_SECRET,
             nodeEnv: process.env.NODE_ENV,
-            mongoConnected: mongoose.connection.readyState === 1
+            mongoConnected: mongoose.connection.readyState === 1,
+            mongoConnectionString: process.env.MONGO ? 'MONGO env found' : process.env.MONGODB_URI ? 'MONGODB_URI env found' : 'No MongoDB env found'
         }
     });
 });
@@ -148,33 +155,64 @@ app.use('/api/auth', authRoute);
 app.use('/api/shops', shopRoute);
 app.use('/api/item', itemRoute);
 
+// Catch-all route for debugging API issues
+app.use('/api/*', (req, res) => {
+    console.log('Unmatched API route:', req.method, req.originalUrl);
+    res.status(404).json({
+        error: 'API endpoint not found',
+        method: req.method,
+        path: req.originalUrl,
+        availableRoutes: [
+            '/api/health',
+            '/api/test-auth',
+            '/api/beauty',
+            '/api/book',
+            '/api/cloth',
+            '/api/product',
+            '/api/promotion',
+            '/api/auth',
+            '/api/shops',
+            '/api/item'
+        ]
+    });
+});
+
 // Error handler
 app.use((err, req, res, next) => {
+    console.error('Server error:', err);
     const statusCode = err.statusCode || 500;
     const message = err.message || 'Internal Server Error';
     res.status(statusCode).json({
         success: false,
         statusCode,
-        message
+        message,
+        ...(process.env.NODE_ENV !== 'production' && { stack: err.stack })
     })
 });
 
 // Connect to MongoDB after server starts
 console.log('Attempting to connect to MongoDB...');
-mongoose.connect(process.env.MONGO, {
-    serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
-    socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
-}).then(() => {
-    console.log('MongoDB connected successfully');
-}).catch((err) => {
-    console.log('MongoDB connection error:', err.message);
-    console.log('Please check:');
-    console.log('1. Internet connection');
-    console.log('2. MongoDB Atlas cluster status');
-    console.log('3. Database credentials');
-    console.log('4. IP whitelist in MongoDB Atlas');
-    console.log('Server will continue running without database connection...');
-});
+const mongoUri = process.env.MONGO || process.env.MONGODB_URI;
+console.log('MongoDB URI exists:', !!mongoUri);
+
+if (!mongoUri) {
+    console.error('Error: No MongoDB connection string found. Please set MONGO or MONGODB_URI environment variable.');
+} else {
+    mongoose.connect(mongoUri, {
+        serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+        socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+    }).then(() => {
+        console.log('MongoDB connected successfully');
+    }).catch((err) => {
+        console.log('MongoDB connection error:', err.message);
+        console.log('Please check:');
+        console.log('1. Internet connection');
+        console.log('2. MongoDB Atlas cluster status');
+        console.log('3. Database credentials');
+        console.log('4. IP whitelist in MongoDB Atlas');
+        console.log('Server will continue running without database connection...');
+    });
+}
 
 // Export for Vercel
 export default app;
