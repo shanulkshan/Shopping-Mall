@@ -69,7 +69,13 @@ app.get('/api/health', (req, res) => {
         status: 'OK',
         timestamp: new Date().toISOString(),
         environment: process.env.NODE_ENV || 'development',
-        message: 'Server is running successfully'
+        message: 'Server is running successfully',
+        debug: {
+            hasMongoUri: !!process.env.MONGO,
+            hasJwtSecret: !!process.env.JWT_SECRET,
+            nodeEnv: process.env.NODE_ENV,
+            mongoConnected: mongoose.connection.readyState === 1
+        }
     });
 });
 

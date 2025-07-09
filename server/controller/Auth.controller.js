@@ -2,6 +2,7 @@ import User from '../models/User.model.js';
 import Shop from '../models/Shop.model.js';
 import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import mongoose from 'mongoose';
 import { errorHandle } from '../utils/error.js';
 
 // Register new user
@@ -95,26 +96,43 @@ export const register = async (req, res, next) => {
 // Login user
 export const login = async (req, res, next) => {
     try {
+        console.log('Login attempt:', { email: req.body.email, hasPassword: !!req.body.password });
+        console.log('Environment check:', { hasJWT: !!process.env.JWT_SECRET, mongoState: mongoose.connection.readyState });
+        
         const { email, password } = req.body;
+
+        // Validate input
+        if (!email || !password) {
+            console.log('Missing email or password');
+            return next(errorHandle(400, 'Email and password are required'));
+        }
 
         // Find user by email
         const user = await User.findOne({ email });
+        console.log('User found:', !!user);
         if (!user) {
             return next(errorHandle(401, 'Invalid credentials'));
         }
 
         // Check if user is active
         if (!user.isActive) {
+            console.log('User is not active');
             return next(errorHandle(401, 'Account is deactivated'));
         }
 
         // Check password
         const isPasswordValid = bcryptjs.compareSync(password, user.password);
+        console.log('Password valid:', isPasswordValid);
         if (!isPasswordValid) {
             return next(errorHandle(401, 'Invalid credentials'));
         }
 
         // Generate JWT token
+        if (!process.env.JWT_SECRET) {
+            console.error('JWT_SECRET is not defined');
+            return next(errorHandle(500, 'Server configuration error'));
+        }
+
         const token = jwt.sign(
             { 
                 id: user._id, 
@@ -128,6 +146,8 @@ export const login = async (req, res, next) => {
 
         // Remove password from response
         const { password: pass, ...userWithoutPassword } = user._doc;
+
+        console.log('Login successful for user:', user.email);
 
         // Set cookie and send response
         res.cookie('access_token', token, {
@@ -143,6 +163,7 @@ export const login = async (req, res, next) => {
         });
 
     } catch (error) {
+        console.error('Login error:', error);
         next(error);
     }
 };
