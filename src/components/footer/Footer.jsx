@@ -70,7 +70,7 @@ const Footer = () => {
                     {mallInfo.name}
                   </h3>
                   <p className={`text-sm font-poppins ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                    Your Premier Shopping Destination
+                    Serendib Plaza - Your Premier Shopping Destination
                   </p>
                 </div>
               </div>

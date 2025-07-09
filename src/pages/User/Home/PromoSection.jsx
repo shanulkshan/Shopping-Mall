@@ -31,7 +31,7 @@ export default function PromoSection() {
                 Discover Amazing Deals
               </h1>
               <p className="mt-4 text-xl text-gray-500 dark:text-gray-300">
-                Explore our shopping mall and find incredible promotions from top brands and local favorites.
+                Explore Serendib Plaza and find incredible promotions from top brands and local favorites.
               </p>
             </div>
             <div>

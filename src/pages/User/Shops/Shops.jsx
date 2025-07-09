@@ -146,7 +146,7 @@ const Shops = () => {
             Discover Amazing Shops
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Explore {shops.length}+ premium stores across all floors of our modern shopping mall
+            Explore {shops.length}+ premium stores across all floors of Serendib Plaza
           </p>
         </motion.div>
 

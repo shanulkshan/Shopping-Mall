@@ -253,7 +253,7 @@ const AdminDashboard = () => {
             Admin Dashboard
           </h1>
           <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Welcome back! Here's what's happening with your shopping mall today.
+            Welcome back! Here's what's happening with Serendib Plaza today.
           </p>
         </motion.div>
 

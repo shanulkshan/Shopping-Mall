@@ -29,7 +29,7 @@ const HomePage = () => {
   // Hero carousel data with more dynamic content
   const heroSlides = [
     {
-      title: "Welcome to Premium Shopping Mall",
+      title: "Welcome to Serendib Plaza",
       subtitle: "Your Ultimate Shopping Destination",
       description: "Discover 50+ premium stores, exclusive deals, and unmatched shopping experience in the heart of the city",
       image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=600&fit=crop",
@@ -410,7 +410,7 @@ const HomePage = () => {
               <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
-                Why Choose Our <span className="text-transparent bg-gradient-to-r from-green-500 to-blue-600 bg-clip-text">Shopping Mall?</span>
+                Why Choose <span className="text-transparent bg-gradient-to-r from-green-500 to-blue-600 bg-clip-text">Serendib Plaza?</span>
               </h2>
               <p className={`text-lg mb-8 ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-600'
