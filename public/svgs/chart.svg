@@ -1,0 +1,6 @@
+<svg id="chart" xmlns="http://www.w3.org/2000/svg" width="47.742" height="47.742" viewBox="0 0 47.742 47.742">
+  <path id="Vector" d="M4.018,7.9A19.9,19.9,0,1,0,19.892,0" transform="translate(3.978 3.978)" fill="none" stroke="#003e6e" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Vector-2" data-name="Vector" d="M0,13.925A13.925,13.925,0,1,0,13.925,0" transform="translate(9.946 9.946)" fill="none" stroke="#003e6e" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Vector-3" data-name="Vector" d="M0,15.914A7.957,7.957,0,0,0,0,0" transform="translate(23.871 15.914)" fill="none" stroke="#003e6e" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Vector-4" data-name="Vector" d="M0,0H47.742V47.742H0Z" fill="none" opacity="0"/>
+</svg>

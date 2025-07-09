@@ -1,0 +1,26 @@
+.qr-code-css h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.qr-code-css button,
+.qr-code-css a {
+    appearance: none;
+    outline: none;
+    border: none;
+    background: none;
+    color: #2bcb4b;
+    font-size: 1.5rem;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.qr-code-css img {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    margin: 2rem auto;
+}

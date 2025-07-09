@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: #0325e1;
+    --primary-foreground: #005cc7;
+    --primary-gradient: transparent
+      linear-gradient(105deg, #0daae9 0%, #0325e1 100%) 0% 0% no-repeat
+      padding-box;
+
+    --secondary: #0daae9;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: #0daae9;
+    --primary-foreground: #ffffff;
+
+    --secondary: #0325e1;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+  }
+
+  * {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .fl-container {
+    @apply container mx-auto px-2 sm:px-6 lg:px-6 xl:px-1;
+  }
+
+  .swiper-button {
+    @apply bg-[#005cc7] rounded-full border-[2px] border-[#005cc7] p-2 text-white hover:bg-white hover:text-[#005cc7] transition-colors duration-200;
+  }
+
+  .button-disabled {
+    @apply bg-grey-light border-[2px] border-grey-light text-gray-400 hover:bg-grey-light hover:text-gray-400;
+  }
+}
+
+.css-13cymwt-control,
+.css-t3ipsp-control {
+  /* Your overridden styles here */
+  background-color: #e5e7eb !important;
+  padding: 6px;
+  border: 1px solid #d1d5db !important;
+  border-radius: 5px;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+.css-t3ipsp-control:focus,
+css-t3ipsp-control:hover {
+  border: none !important;
+}
+.css-13cymwt-control:hover {
+  border-color: #3c82f6 !important;
+}
+
+/* Global swaper css */
+span.swiper-pagination-bullet {
+  width: 50px;
+  height: 5px;
+  border-radius: 4px;
+}
+
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: linear-gradient(45deg, #0ca2e8, #042be2);
+}
+.swiper-wrapper {
+  -webkit-transition-timing-function: linear !important;
+  -o-transition-timing-function: linear !important;
+  transition-timing-function: linear !important;
+}
+
+.grey-gradient {
+  background: linear-gradient(
+    180deg,
+    rgb(238, 237, 244),
+    rgba(238, 237, 244, 100)
+  );
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/* Smooth scrolling for better user experience */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(75, 85, 99, 0.7);
+}
+
+/* Shopping mall modern animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s ease-out;
+}
+
+/* Enhanced backdrop blur for modern glass effect */
+.backdrop-blur-modern {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+/* Search input focus enhancement */
+.search-input:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.dark .search-input:focus {
+  box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.1);
+}
+

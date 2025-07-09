@@ -1,0 +1,6 @@
+<svg id="triangle" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <path id="Vector" d="M20,37.635H7.879c-6.94,0-9.84-4.96-6.48-11.02l6.24-11.24,5.88-10.56c3.56-6.42,9.4-6.42,12.96,0l5.88,10.58,6.24,11.24c3.36,6.06.44,11.02-6.48,11.02H20Z" transform="translate(4.001 5.185)" fill="none" stroke="#003e6e" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Vector-2" data-name="Vector" d="M37.76,13.22,18.88,0,0,13.22" transform="translate(5.12 26.78)" fill="none" stroke="#003e6e" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Vector-3" data-name="Vector" d="M0,0V20.78" transform="translate(24 6)" fill="none" stroke="#003e6e" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+  <path id="Vector-4" data-name="Vector" d="M0,0H48V48H0Z" fill="none" opacity="0"/>
+</svg>

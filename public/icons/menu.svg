@@ -1,0 +1,6 @@
+<svg id="menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <path id="Vector" d="M0,0H16.793" transform="translate(3.603 7)" fill="none" stroke="#262626" stroke-linecap="round" stroke-width="1.5"/>
+  <path id="Vector-2" data-name="Vector" d="M0,0H16.793" transform="translate(3.603 12)" fill="none" stroke="#262626" stroke-linecap="round" stroke-width="1.5"/>
+  <path id="Vector-3" data-name="Vector" d="M0,0H16.793" transform="translate(3.603 17)" fill="none" stroke="#262626" stroke-linecap="round" stroke-width="1.5"/>
+  <path id="Vector-4" data-name="Vector" d="M0,0H24V24H0Z" fill="none" opacity="0"/>
+</svg>
