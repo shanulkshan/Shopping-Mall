@@ -12,7 +12,8 @@
       "src": "server/index.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["server/**"]
+        "includeFiles": ["server/**"],
+        "maxLambdaSize": "50mb"
       }
     }
   ],
@@ -26,11 +27,6 @@
       "dest": "/index.html"
     }
   ],
-  "functions": {
-    "server/index.js": {
-      "maxDuration": 30
-    }
-  },
   "env": {
     "NODE_ENV": "production"
   },
