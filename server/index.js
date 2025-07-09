@@ -64,6 +64,15 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // Routes
+app.get('/api/health', (req, res) => {
+    res.json({
+        status: 'OK',
+        timestamp: new Date().toISOString(),
+        environment: process.env.NODE_ENV || 'development',
+        message: 'Server is running successfully'
+    });
+});
+
 app.use('/api/beauty', beauty);
 app.use('/api/book', book);
 app.use('/api/cloth', cloth);

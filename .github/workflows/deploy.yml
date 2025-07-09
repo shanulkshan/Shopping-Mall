@@ -33,8 +33,11 @@ jobs:
           npm ci
           
       - name: Build frontend
-        run: npm run build
-        
+        run: |
+          npm run build
+          echo "Build completed successfully"
+          ls -la dist/
+          
       - name: Deploy to Vercel (Production)
         if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
         uses: amondnet/vercel-action@v25
@@ -67,6 +70,10 @@ jobs:
                 
                 ✅ **Frontend**: https://${VERCEL_URL}
                 ✅ **API**: https://${VERCEL_URL}/api
+                
+                **Debug URLs:**
+                - Health Check: https://${VERCEL_URL}/api/health
+                - Console logs: Check browser developer tools
                 
                 Changes will be automatically deployed when this PR is merged.`
               });

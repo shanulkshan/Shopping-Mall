@@ -11,15 +11,31 @@ export const useDarkMode = () => {
 };
 
 export const DarkModeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Check for saved theme preference or default to light mode
-    const savedTheme = localStorage.getItem('darkMode');
-    return savedTheme ? JSON.parse(savedTheme) : false;
-  });
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Save theme preference to localStorage
-    localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
+    // Only access localStorage on client side
+    try {
+      const savedTheme = localStorage.getItem('darkMode');
+      if (savedTheme) {
+        setIsDarkMode(JSON.parse(savedTheme));
+      }
+    } catch (error) {
+      console.warn('Failed to load theme from localStorage:', error);
+    }
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isLoaded) return;
+    
+    try {
+      // Save theme preference to localStorage
+      localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
+    } catch (error) {
+      console.warn('Failed to save theme to localStorage:', error);
+    }
     
     // Apply theme to document
     if (isDarkMode) {
@@ -27,7 +43,7 @@ export const DarkModeProvider = ({ children }) => {
     } else {
       document.documentElement.classList.remove('dark');
     }
-  }, [isDarkMode]);
+  }, [isDarkMode, isLoaded]);
 
   const toggleDarkMode = () => {
     setIsDarkMode(prev => !prev);
