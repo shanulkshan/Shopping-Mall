@@ -27,7 +27,7 @@ app.use((req, res, next) => {
     const allowedOrigins = [
         'http://localhost:5173',
         'http://localhost:3000',
-        'https://your-app-name.vercel.app', // Replace with your actual Vercel domain
+        'https://shopping-mall-dun.vercel.app',
         process.env.FRONTEND_URL
     ].filter(Boolean);
     
