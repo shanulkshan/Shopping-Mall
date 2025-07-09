@@ -185,7 +185,18 @@ export const logout = (req, res) => {
 // Get current user
 export const getCurrentUser = async (req, res, next) => {
     try {
+        console.log('getCurrentUser called');
+        console.log('req.user:', req.user);
+        console.log('MongoDB connection state:', mongoose.connection.readyState);
+        
+        if (!req.user || !req.user.id) {
+            console.log('No user ID in request');
+            return next(errorHandle(401, 'User not authenticated'));
+        }
+        
         const user = await User.findById(req.user.id).select('-password');
+        console.log('User found from DB:', !!user);
+        
         if (!user) {
             return next(errorHandle(404, 'User not found'));
         }
@@ -195,6 +206,7 @@ export const getCurrentUser = async (req, res, next) => {
             user
         });
     } catch (error) {
+        console.error('getCurrentUser error:', error);
         next(error);
     }
 };

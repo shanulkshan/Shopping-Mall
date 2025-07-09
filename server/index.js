@@ -80,6 +80,18 @@ app.get('/api/health', (req, res) => {
     });
 });
 
+// Test auth endpoint
+app.get('/api/test-auth', (req, res) => {
+    res.json({
+        message: 'Auth route accessible',
+        cookies: req.cookies,
+        headers: {
+            authorization: req.headers.authorization,
+            cookie: req.headers.cookie
+        }
+    });
+});
+
 // Serve uploaded images via API endpoint
 app.get('/uploads/shop-logos/:filename', (req, res) => {
     try {
