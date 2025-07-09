@@ -53,9 +53,15 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from 'react';
 
 function AppContent() {
   const { isDarkMode } = useDarkMode();
+
+  // Ensure the document title is set correctly
+  useEffect(() => {
+    document.title = "Serendib Plaza";
+  }, []);
 
   return (
     <ErrorBoundary>
