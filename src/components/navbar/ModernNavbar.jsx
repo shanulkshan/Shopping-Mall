@@ -185,11 +185,7 @@ const ModernNavbar = () => {
               ) : (
                 <>
                   <a href="/register">
-                    <button className={`px-6 py-2 rounded-xl font-medium transition-all duration-300 ${
-                      isDarkMode
-                        ? 'text-gray-300 hover:text-white hover:bg-gray-800/50'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100/50'
-                    }`}>
+                    <button className="px-6 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-medium rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95">
                       Sign Up
                     </button>
                   </a>
@@ -315,11 +311,7 @@ const ModernNavbar = () => {
             ) : (
               <div className="flex flex-col gap-3">
                 <a href="/register" onClick={handleMenuOpen}>
-                  <button className={`w-full px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
-                    isDarkMode
-                      ? 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 border border-gray-600/30'
-                      : 'bg-gray-100/50 text-gray-600 hover:bg-gray-200/50 border border-gray-300/30'
-                  }`}>
+                  <button className="w-full px-4 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-medium rounded-xl transition-all duration-300 hover:shadow-lg">
                     Sign Up
                   </button>
                 </a>

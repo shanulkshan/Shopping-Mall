@@ -10,13 +10,13 @@ const Menu = (props) => {
       {props.links.map((link, index) => (
         <Link
           key={index}
-          className={`font-light transition-colors lg:hover:text-blue-600 ${
+          className={`text-lg font-poppins font-semibold transition-all duration-300 lg:hover:text-blue-600 lg:hover:border-b-2 lg:hover:border-blue-600 lg:hover:pb-1 lg:hover:scale-105 ${
             isDarkMode ? 'text-gray-200' : 'text-h1-black'
           } ${props.linkClassNames}`}
           to={link.link}
           onClick={props.onLinkClick}
         >
-          <li>{link.title}</li>
+          <li className="tracking-wide">{link.title}</li>
         </Link>
       ))}
     </ul>

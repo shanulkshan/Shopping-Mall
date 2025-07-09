@@ -24,7 +24,18 @@ const app = express();
 
 // CORS configuration
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+    const allowedOrigins = [
+        'http://localhost:5173',
+        'http://localhost:3000',
+        'https://your-app-name.vercel.app', // Replace with your actual Vercel domain
+        process.env.FRONTEND_URL
+    ].filter(Boolean);
+    
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.header('Access-Control-Allow-Origin', origin);
+    }
+    
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
     res.header('Access-Control-Allow-Credentials', 'true');
@@ -44,10 +55,13 @@ app.use(cookieParser());
 // Serve static files from uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Start server first
-app.listen(3000, () => {
-    console.log('Server listening on port 3000');
-});
+// Start server (Vercel will handle this automatically in production)
+const PORT = process.env.PORT || 3000;
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`Server listening on port ${PORT}`);
+    });
+}
 
 // Routes
 app.use('/api/beauty', beauty);
@@ -86,3 +100,6 @@ mongoose.connect(process.env.MONGO, {
     console.log('4. IP whitelist in MongoDB Atlas');
     console.log('Server will continue running without database connection...');
 });
+
+// Export for Vercel
+export default app;

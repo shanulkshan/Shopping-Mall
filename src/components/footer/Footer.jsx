@@ -1,5 +1,6 @@
 import React from "react";
 import { useDarkMode } from "../../context/DarkModeContext";
+import NavbarData from "../../data/NavbarData";
 
 const Footer = () => {
   const [email, setEmail] = React.useState("");
@@ -35,10 +36,10 @@ const Footer = () => {
   ];
 
   const mallInfo = {
-    name: "Xvintec Shopping Mall",
+    name: NavbarData.title,
     address: "123 Commerce Street, Downtown Plaza",
-    phone: "+1 (555) 123-4567",
-    email: "info@xvintecmall.com",
+    phone: "+94 (77) 123-4567",
+    email: "info@serendibplaza.lk",
     hours: "Mon-Sun: 10:00 AM - 10:00 PM"
   };
 
@@ -59,16 +60,16 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <div className="mb-8">
               <div className="flex items-center mb-4">
-                <div className={`w-12 h-12 rounded-2xl ${isDarkMode ? 'bg-indigo-500/20' : 'bg-indigo-100'} flex items-center justify-center mr-4`}>
-                  <svg className={`w-6 h-6 ${isDarkMode ? 'text-indigo-400' : 'text-indigo-600'}`} fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm2 6a2 2 0 114 0 2 2 0 01-4 0zm8 0a2 2 0 114 0 2 2 0 01-4 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
+                <img
+                  src={NavbarData.logo.image.url}
+                  alt={NavbarData.logo.image.alt}
+                  className="w-12 h-12 rounded-2xl mr-4 object-contain"
+                />
                 <div>
-                  <h3 className={`text-xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                  <h3 className={`text-3xl font-poppins font-bold tracking-tighter ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                     {mallInfo.name}
                   </h3>
-                  <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                  <p className={`text-sm font-poppins ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                     Your Premier Shopping Destination
                   </p>
                 </div>
@@ -104,13 +105,12 @@ const Footer = () => {
             </div>
 
             {/* Newsletter */}
-            <div className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-white'} backdrop-blur-md rounded-2xl p-6 border ${isDarkMode ? 'border-gray-700/50' : 'border-gray-200/50'} shadow-lg`}>
-              <h4 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'} mb-2`}>
-                Stay Updated
-              </h4>
-              <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} mb-4`}>
-                Subscribe to our newsletter for the latest promotions and mall updates
-              </p>
+            <div className={`${isDarkMode ? 'bg-gray-800/50' : 'bg-white'} backdrop-blur-md rounded-2xl p-6 border ${isDarkMode ? 'border-gray-700/50' : 'border-gray-200/50'} shadow-lg`}>            <h4 className={`text-lg font-poppins font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'} mb-2`}>
+              Stay Updated
+            </h4>
+            <p className={`text-sm font-poppins ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} mb-4`}>
+              Subscribe to our newsletter for the latest promotions and mall updates
+            </p>
               <form onSubmit={handleSubmit} className="flex gap-2">
                 <input
                   type="email"
@@ -138,7 +138,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'} mb-6`}>
+            <h4 className={`text-lg font-poppins font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'} mb-6`}>
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -146,7 +146,7 @@ const Footer = () => {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className={`${isDarkMode ? 'text-gray-300 hover:text-indigo-400' : 'text-gray-600 hover:text-indigo-600'} transition-colors duration-200 flex items-center group`}
+                    className={`font-poppins ${isDarkMode ? 'text-gray-300 hover:text-indigo-400' : 'text-gray-600 hover:text-indigo-600'} transition-colors duration-200 flex items-center group`}
                   >
                     <svg className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -157,7 +157,7 @@ const Footer = () => {
               ))}
             </ul>
 
-            <h4 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'} mb-6 mt-8`}>
+            <h4 className={`text-lg font-poppins font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'} mb-6 mt-8`}>
               Company
             </h4>
             <ul className="space-y-3">
@@ -165,7 +165,7 @@ const Footer = () => {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className={`${isDarkMode ? 'text-gray-300 hover:text-indigo-400' : 'text-gray-600 hover:text-indigo-600'} transition-colors duration-200 flex items-center group`}
+                    className={`font-poppins ${isDarkMode ? 'text-gray-300 hover:text-indigo-400' : 'text-gray-600 hover:text-indigo-600'} transition-colors duration-200 flex items-center group`}
                   >
                     <svg className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -179,7 +179,7 @@ const Footer = () => {
 
           {/* Support */}
           <div>
-            <h4 className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'} mb-6`}>
+            <h4 className={`text-lg font-poppins font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'} mb-6`}>
               Support
             </h4>
             <ul className="space-y-3">
@@ -187,7 +187,7 @@ const Footer = () => {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className={`${isDarkMode ? 'text-gray-300 hover:text-indigo-400' : 'text-gray-600 hover:text-indigo-600'} transition-colors duration-200 flex items-center group`}
+                    className={`font-poppins ${isDarkMode ? 'text-gray-300 hover:text-indigo-400' : 'text-gray-600 hover:text-indigo-600'} transition-colors duration-200 flex items-center group`}
                   >
                     <svg className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -233,25 +233,25 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className={`border-t ${isDarkMode ? 'border-gray-800' : 'border-gray-200'} pt-8 flex flex-col md:flex-row justify-between items-center`}>
-          <div className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} mb-4 md:mb-0`}>
-            © 2024 Xvintec Shopping Mall. All rights reserved.
+          <div className={`text-sm font-poppins ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} mb-4 md:mb-0`}>
+            © 2024 {NavbarData.title}. All rights reserved.
           </div>
           <div className="flex items-center space-x-6">
             <a
               href="/privacy"
-              className={`text-sm ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors duration-200`}
+              className={`text-sm font-poppins ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors duration-200`}
             >
               Privacy Policy
             </a>
             <a
               href="/terms"
-              className={`text-sm ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors duration-200`}
+              className={`text-sm font-poppins ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors duration-200`}
             >
               Terms of Service
             </a>
             <a
               href="/cookies"
-              className={`text-sm ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors duration-200`}
+              className={`text-sm font-poppins ${isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors duration-200`}
             >
               Cookie Policy
             </a>

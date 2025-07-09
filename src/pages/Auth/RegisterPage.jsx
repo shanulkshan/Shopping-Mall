@@ -218,9 +218,9 @@ const RegisterPage = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-8"
+          className="mb-8 text-center"
         >
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-600 rounded-full mb-6 shadow-lg">
+          <div className="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-full shadow-lg bg-gradient-to-r from-purple-500 to-blue-600">
             <UserIcon className="w-8 h-8 text-white" />
           </div>
           <h1 className={`text-3xl font-bold mb-2 ${
@@ -365,7 +365,7 @@ const RegisterPage = () => {
                       Username
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <UserIcon className={`h-5 w-5 ${
                           isDarkMode ? 'text-gray-400' : 'text-gray-400'
                         }`} />
@@ -394,7 +394,7 @@ const RegisterPage = () => {
                       Email Address
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <EnvelopeIcon className={`h-5 w-5 ${
                           isDarkMode ? 'text-gray-400' : 'text-gray-400'
                         }`} />
@@ -435,7 +435,7 @@ const RegisterPage = () => {
                       Password
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <LockClosedIcon className={`h-5 w-5 ${
                           isDarkMode ? 'text-gray-400' : 'text-gray-400'
                         }`} />
@@ -456,7 +456,7 @@ const RegisterPage = () => {
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                        className="absolute inset-y-0 right-0 flex items-center pr-3"
                       >
                         {showPassword ? (
                           <EyeSlashIcon className={`h-5 w-5 ${
@@ -479,7 +479,7 @@ const RegisterPage = () => {
                       Confirm Password
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <LockClosedIcon className={`h-5 w-5 ${
                           isDarkMode ? 'text-gray-400' : 'text-gray-400'
                         }`} />
@@ -504,7 +504,7 @@ const RegisterPage = () => {
                       <button
                         type="button"
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                        className="absolute inset-y-0 right-0 flex items-center pr-3"
                       >
                         {showConfirmPassword ? (
                           <EyeSlashIcon className={`h-5 w-5 ${
@@ -542,7 +542,7 @@ const RegisterPage = () => {
                       Shop Name
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <BuildingStorefrontIcon className={`h-5 w-5 ${
                           isDarkMode ? 'text-gray-400' : 'text-gray-400'
                         }`} />
@@ -571,7 +571,7 @@ const RegisterPage = () => {
                       Category
                     </label>
                     <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <TagIcon className={`h-5 w-5 ${
                           isDarkMode ? 'text-gray-400' : 'text-gray-400'
                         }`} />
@@ -605,7 +605,7 @@ const RegisterPage = () => {
                         Floor
                       </label>
                       <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                           <MapPinIcon className={`h-5 w-5 ${
                             isDarkMode ? 'text-gray-400' : 'text-gray-400'
                           }`} />
@@ -719,7 +719,7 @@ const RegisterPage = () => {
                           <img
                             src={URL.createObjectURL(formData.shopLogo)}
                             alt="Shop logo preview"
-                            className="mx-auto h-20 w-20 object-cover rounded-xl"
+                            className="object-cover w-20 h-20 mx-auto rounded-xl"
                           />
                         </div>
                       )}
@@ -735,9 +735,9 @@ const RegisterPage = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.5 }}
-                  className="text-center py-8"
+                  className="py-8 text-center"
                 >
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-blue-600 rounded-full mb-6 shadow-lg">
+                  <div className="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-full shadow-lg bg-gradient-to-r from-green-500 to-blue-600">
                     <CheckCircleIcon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className={`text-2xl font-bold mb-4 ${
@@ -759,9 +759,9 @@ const RegisterPage = () => {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-2xl p-4"
+                className="p-4 border border-red-200 bg-red-50 dark:bg-red-900/20 dark:border-red-800 rounded-2xl"
               >
-                <p className="text-sm text-red-600 dark:text-red-400 text-center">
+                <p className="text-sm text-center text-red-600 dark:text-red-400">
                   {error}
                 </p>
               </motion.div>
@@ -785,7 +785,7 @@ const RegisterPage = () => {
                 </motion.button>
               )}
 
-              <div className="flex-1 flex justify-end">
+              <div className="flex justify-end flex-1">
                 {currentStep < 3 ? (
                   <motion.button
                     type="button"
@@ -793,10 +793,10 @@ const RegisterPage = () => {
                     disabled={!validateStep()}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-3 rounded-2xl font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center space-x-2"
+                    className="flex items-center px-8 py-3 space-x-2 font-semibold text-white transition-all duration-300 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                   >
                     <span>Next</span>
-                    <ArrowRightIcon className="h-5 w-5" />
+                    <ArrowRightIcon className="w-5 h-5" />
                   </motion.button>
                 ) : (
                   <motion.button
@@ -804,17 +804,17 @@ const RegisterPage = () => {
                     disabled={loading}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="bg-gradient-to-r from-green-600 to-blue-600 text-white px-8 py-3 rounded-2xl font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center space-x-2"
+                    className="flex items-center px-8 py-3 space-x-2 font-semibold text-white transition-all duration-300 shadow-lg bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 rounded-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none hover:shadow-xl"
                   >
                     {loading ? (
                       <>
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
+                        <div className="w-5 h-5 border-b-2 border-white rounded-full animate-spin" />
                         <span>Creating Account...</span>
                       </>
                     ) : (
                       <>
                         <span>Create Account</span>
-                        <CheckCircleIcon className="h-5 w-5" />
+                        <CheckCircleIcon className="w-5 h-5" />
                       </>
                     )}
                   </motion.button>

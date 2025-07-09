@@ -21,10 +21,10 @@ const NavbarData = {
       title: "Promotions",
       link: "/promotions",
     },
-    {
-      title: "QR Scan",
-      link: "/qr-scan",
-    },
+    // {
+    //   title: "QR Scan",
+    //   link: "/qr-scan",
+    // },
   ],
 };
 
