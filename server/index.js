@@ -27,6 +27,7 @@ const app = express();
 app.use((req, res, next) => {
     const allowedOrigins = [
         'http://localhost:5173',
+        'http://localhost:5174',
         'http://localhost:3000',
         'https://shopping-mall-dun.vercel.app',
         'https://shopping-mall-ten-lemon.vercel.app',
@@ -37,9 +38,10 @@ app.use((req, res, next) => {
     const origin = req.headers.origin;
     console.log('Request origin:', origin);
     
-    // Allow all Vercel preview deployments and specific origins
+    // Allow all Vercel preview deployments, specific origins, and localhost
     if (allowedOrigins.includes(origin) || 
-        (origin && origin.includes('vercel.app') && origin.includes('shopping-mall'))) {
+        (origin && origin.includes('vercel.app') && origin.includes('shopping-mall')) ||
+        (origin && origin.startsWith('http://localhost:'))) {
         res.header('Access-Control-Allow-Origin', origin);
     }
     

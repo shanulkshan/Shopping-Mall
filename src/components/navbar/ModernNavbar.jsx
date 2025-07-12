@@ -6,6 +6,7 @@ import NavbarData from "../../data/NavbarData";
 import { useAuth } from "../../context/AuthContext";
 import { useDarkMode } from "../../context/DarkModeContext";
 import { toast } from "react-toastify";
+import logo2 from "../../assets/logo2.png";
 
 import { 
   UserIcon,
@@ -80,9 +81,9 @@ const ModernNavbar = () => {
             <div className="flex items-center">
               <a href="/" className="flex items-center">
                 <img 
-                  src="/logos/logo2.png" 
+                  src={logo2} 
                   alt="Serendib Plaza" 
-                  className="w-auto h-16 lg:h-20 mr-4"
+                  className="w-auto h-16 mr-4 lg:h-20"
                 />
                 <span className={`text-xl lg:text-2xl font-bold ${
                   isDarkMode ? 'text-white' : 'text-gray-900'
