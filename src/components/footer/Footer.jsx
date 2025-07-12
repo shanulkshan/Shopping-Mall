@@ -1,6 +1,7 @@
 import React from "react";
 import { useDarkMode } from "../../context/DarkModeContext";
 import NavbarData from "../../data/NavbarData";
+import logo2 from "../../assets/logo2.png";
 
 const Footer = () => {
   const [email, setEmail] = React.useState("");
@@ -61,8 +62,8 @@ const Footer = () => {
             <div className="mb-8">
               <div className="flex items-center mb-4">
                 <img
-                  src={NavbarData.logo.image.url}
-                  alt={NavbarData.logo.image.alt}
+                  src={logo2}
+                  alt="Serendib Plaza"
                   className="w-12 h-12 rounded-2xl mr-4 object-contain"
                 />
                 <div>
