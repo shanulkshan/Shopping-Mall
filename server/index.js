@@ -5,7 +5,7 @@ import fs from 'fs';
 import beauty from './routes/Beauty.route.js';
 import book from './routes/bookshop.route.js';
 import cloth from './routes/cloth.route.js';
-import product from './routes/product.rotue.js';
+import product from './routes/product.route.js';
 import promotionRoute from './routes/Promotion.route.js';
 import authRoute from './routes/Auth.route.js';
 import shopRoute from './routes/Shop.route.js';

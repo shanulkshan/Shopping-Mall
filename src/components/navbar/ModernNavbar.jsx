@@ -6,6 +6,7 @@ import NavbarData from "../../data/NavbarData";
 import { useAuth } from "../../context/AuthContext";
 import { useDarkMode } from "../../context/DarkModeContext";
 import { toast } from "react-toastify";
+
 import { 
   UserIcon,
   Bars3Icon,
@@ -77,25 +78,27 @@ const ModernNavbar = () => {
             
             {/* Logo */}
             <div className="flex items-center">
-              <CompanyLogo
-                imageClassName="w-auto h-16 lg:h-20"
-                className="mr-4"
-                title={NavbarData.title}
-                image={{
-                  url: NavbarData.logo.image.url,
-                  alt: NavbarData.logo.image.alt,
-                }}
-                link={NavbarData.logo.link}
-              />
+              <a href="/" className="flex items-center">
+                <img 
+                  src="/logos/logo2.png" 
+                  alt="Serendib Plaza" 
+                  className="w-auto h-16 lg:h-20 mr-4"
+                />
+                <span className={`text-xl lg:text-2xl font-bold ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}>
+                  {NavbarData.title}
+                </span>
+              </a>
             </div>
 
             {/* Desktop Navigation Menu */}
-            <div className="hidden lg:flex items-center flex-1 justify-center">
+            <div className="items-center justify-center flex-1 hidden lg:flex">
               <Menu className="flex items-center gap-8" links={NavbarData?.menuItems} />
             </div>
 
             {/* Desktop Action Buttons */}
-            <div className="hidden lg:flex items-center gap-3">
+            <div className="items-center hidden gap-3 lg:flex">
               {isAuthenticated ? (
                 <>
                   {/* Seller Dashboard Button */}
@@ -121,10 +124,10 @@ const ModernNavbar = () => {
                           : 'hover:bg-gray-100/50 text-gray-600'
                       } ${isProfileMenuOpen ? 'ring-2 ring-blue-500/50' : ''}`}
                     >
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-600">
                         <UserIcon className="w-5 h-5 text-white" />
                       </div>
-                      <span className="hidden xl:block font-medium">{user?.username}</span>
+                      <span className="hidden font-medium xl:block">{user?.username}</span>
                       <svg className={`w-4 h-4 transition-transform duration-200 ${isProfileMenuOpen ? 'rotate-180' : ''}`} fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
@@ -185,12 +188,12 @@ const ModernNavbar = () => {
               ) : (
                 <>
                   <a href="/register">
-                    <button className="px-6 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-medium rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95">
+                    <button className="px-6 py-2 font-medium text-white transition-all duration-300 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 rounded-xl hover:shadow-lg hover:scale-105 active:scale-95">
                       Sign Up
                     </button>
                   </a>
                   <a href="/login">
-                    <button className="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95">
+                    <button className="px-6 py-2 font-medium text-white transition-all duration-300 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-xl hover:shadow-lg hover:scale-105 active:scale-95">
                       Sign In
                     </button>
                   </a>
@@ -212,7 +215,7 @@ const ModernNavbar = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="flex lg:hidden items-center gap-2">
+            <div className="flex items-center gap-2 lg:hidden">
               {/* Mobile Dark Mode Toggle */}
               <button
                 onClick={toggleDarkMode}
@@ -303,7 +306,7 @@ const ModernNavbar = () => {
                     handleLogout();
                     handleMenuOpen();
                   }}
-                  className="w-full px-4 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-medium rounded-xl transition-all duration-300"
+                  className="w-full px-4 py-3 font-medium text-white transition-all duration-300 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 rounded-xl"
                 >
                   Sign Out
                 </button>
@@ -311,12 +314,12 @@ const ModernNavbar = () => {
             ) : (
               <div className="flex flex-col gap-3">
                 <a href="/register" onClick={handleMenuOpen}>
-                  <button className="w-full px-4 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-medium rounded-xl transition-all duration-300 hover:shadow-lg">
+                  <button className="w-full px-4 py-3 font-medium text-white transition-all duration-300 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 rounded-xl hover:shadow-lg">
                     Sign Up
                   </button>
                 </a>
                 <a href="/login" onClick={handleMenuOpen}>
-                  <button className="w-full px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium rounded-xl transition-all duration-300">
+                  <button className="w-full px-4 py-3 font-medium text-white transition-all duration-300 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-xl">
                     Sign In
                   </button>
                 </a>
